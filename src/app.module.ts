@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MessagesService } from './messages/messages.service';
-import { MessagesController } from './messages/messages.controller';
-import { MessagesModule } from './messages/messages.module';
+
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TaskModule } from './task/task.module';
 
 @Module({
   imports: [
@@ -13,14 +12,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
+      password: '123456',
       database: 'task-management',
       entities: [],
       synchronize: true,
+      autoLoadEntities: true
     }),
-    MessagesModule
+    TaskModule
   ],
-  controllers: [AppController, MessagesController],
-  providers: [AppService, MessagesService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
