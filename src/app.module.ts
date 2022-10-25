@@ -5,6 +5,9 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskModule } from './task/task.module';
 import { MessageModule } from './message/message.module';
+import { AuthController } from './auth/auth.controller';
+import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,7 +23,8 @@ import { MessageModule } from './message/message.module';
       autoLoadEntities: true
     }),
     TaskModule,
-    MessageModule
+    MessageModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
